@@ -19,7 +19,7 @@ const Chart = ({ district }: {
   const filteredData = district ? data.filter((item) => item.id === district) : data;
 
   return (
-    <ResponsiveContainer width="100%" height={500} >
+    <ResponsiveContainer width="100%" height={500}>
       <ComposedChart
         data={filteredData}
         margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
@@ -27,11 +27,11 @@ const Chart = ({ district }: {
         <CartesianGrid stroke="#efefef" />
         <XAxis dataKey="time" />
         <YAxis
-          label={{ value: 'area', angle: -90, position: 'insideLeft' }}
+          label={{ value: 'area', angle: -90, position: 'insideLeft', offset: -10 }}
           yAxisId="left"
         />
         <YAxis
-          label={{ value: 'bar', angle: 90, position: 'insideRight' }}
+          label={{ value: 'bar', angle: 90, position: 'insideRight', offset: -10 }}
           yAxisId="right"
           orientation="right"
         />

@@ -15,10 +15,10 @@ const Layout = ({ children }: Props) => {
 export default Layout;
 
 const StyledLayout = styled.div`
-  max-width: 1440px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  padding: 0 5rem;
 `;
