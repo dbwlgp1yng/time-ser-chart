@@ -8,20 +8,20 @@ import {
   ComposedChart,
   Legend,
   ResponsiveContainer,
+  Cell,
 } from "recharts";
 import useChartData from "../../hooks/useChartData";
 import CustomToolTip from "../CustomToolTip/CustomToolTip";
 
 const Chart = ({ district }: {
-  district: string;
+  district: string | null;
 }) => {
   const { data } = useChartData();
-  const filteredData = district ? data.filter((item) => item.id === district) : data;
 
   return (
     <ResponsiveContainer width="100%" height={500}>
       <ComposedChart
-        data={filteredData}
+        data={data}
         margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
       >
         <CartesianGrid stroke="#efefef" />
@@ -37,10 +37,17 @@ const Chart = ({ district }: {
         />
         <Tooltip content={<CustomToolTip />} />
         <Legend />
-        <Area dataKey="value_area" fill="#ff7300" stroke="#ff7300" yAxisId="left" />
-        <Bar dataKey="value_bar" barSize={20} fill="#7ac4c0" yAxisId="right" />
+        <Bar dataKey="value_bar" barSize={20} fill="#7ac4c0" yAxisId="right">
+          {data.map((item, idx) => (
+            <Cell
+              key={`cell-${idx}`}
+              fill={`${item.id === district ? `#004943` : `#7ac4c0`}`}
+            />
+          ))}
+        </Bar>
+        <Area dataKey="value_area" fillOpacity={0.4} fill="#ff7300" stroke="#ff7300" yAxisId="left" />
       </ComposedChart>
-    </ResponsiveContainer>
+    </ResponsiveContainer >
   )
 };
 

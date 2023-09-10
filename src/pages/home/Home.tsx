@@ -1,30 +1,34 @@
-import { useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Chart from "components/Chart/Chart";
 import useChartData from "hooks/useChartData";
 import styled from "styled-components";
 
 const Home = () => {
   const { districtName } = useChartData();
-  const [district, setDistrict] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentParams = searchParams.get("id");
+  const navigate = useNavigate();
 
-  const handleClickFiltering = (name: string) => setDistrict(name);
+  const handleClickFiltering = (clickedId: string) => {
+    if (clickedId) setSearchParams({ id: clickedId });
+  };
 
   return (
     <>
       <StyledFilter>
         <button
-          onClick={() => handleClickFiltering('')}
-          className={`${district === "" ? "active" : ""}`}
+          onClick={() => navigate("/")}
+          className={`${currentParams === "" ? "active" : ""}`}
         >전체</button>
         {districtName.map((name) => (
           <button
             key={name}
             onClick={() => handleClickFiltering(name)}
-            className={`${district === name ? "active" : ""}`}
+            className={`${currentParams === name ? "active" : ""}`}
           >{name}</button>
         ))}
       </StyledFilter>
-      <Chart district={district} />
+      <Chart district={currentParams} />
     </>
   )
 };
