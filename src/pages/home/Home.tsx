@@ -9,6 +9,7 @@ import {
   Legend,
 } from "recharts";
 import useChartData from "../../hooks/useChartData";
+import CustomToolTip from "components/tooltip/CustomToolTip";
 
 const Home = () => {
   const { data } = useChartData();
@@ -32,7 +33,7 @@ const Home = () => {
         yAxisId="right"
         orientation="right"
       />
-      <Tooltip />
+      <Tooltip content={<CustomToolTip />} />
       <Legend />
       <Area dataKey="value_area" fill="#ff7300" stroke="#ff7300" yAxisId="left" />
       <Bar dataKey="value_bar" barSize={20} fill="#7ac4c0" yAxisId="right" />
