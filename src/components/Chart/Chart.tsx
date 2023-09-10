@@ -12,15 +12,17 @@ import {
 import useChartData from "../../hooks/useChartData";
 import CustomToolTip from "../CustomToolTip/CustomToolTip";
 
-const Chart = () => {
+const Chart = ({ district }: {
+  district: string;
+}) => {
   const { data } = useChartData();
+  const filteredData = district ? data.filter((item) => item.id === district) : data;
 
   return (
     <ResponsiveContainer width="100%" height={500} >
       <ComposedChart
-        data={data}
+        data={filteredData}
         margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
-        barGap={10}
       >
         <CartesianGrid stroke="#efefef" />
         <XAxis dataKey="time" />

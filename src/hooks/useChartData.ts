@@ -20,8 +20,10 @@ const useChartData = () => {
     };
     getChart();
   }, []);
+  
+  const districtName = [...new Set(chartData.map((data) => data.id))].sort();
 
-  return { data: chartData };
+  return { data: chartData, districtName };
 };
 
 export default useChartData;
