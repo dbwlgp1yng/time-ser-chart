@@ -1,10 +1,16 @@
-import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Layout from 'components/common/layout/Layout';
+import Header from 'components/common/header/Header';
+
 
 function App() {
   return (
-    <div className="App">
-
-    </div>
+    <>
+      <Layout>
+        <Header />
+        <Outlet />
+      </Layout>
+    </>
   );
 }
 
