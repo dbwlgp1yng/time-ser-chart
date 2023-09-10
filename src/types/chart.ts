@@ -11,7 +11,6 @@ export interface IChart {
   value_area: number;
   value_bar: number;
   time: string;
-  value_time: string;
 }
 
 export interface IChartResponse {
