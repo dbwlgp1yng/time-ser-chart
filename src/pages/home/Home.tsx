@@ -18,7 +18,7 @@ const Home = () => {
       <StyledFilter>
         <button
           onClick={() => navigate("/")}
-          className={`${currentParams === "" ? "active" : ""}`}
+          className={`${currentParams === null ? "active" : ""}`}
         >전체</button>
         {districtName.map((name) => (
           <button
@@ -37,10 +37,11 @@ export default Home;
 
 const StyledFilter = styled.div`
   display: flex;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  margin-left: 4rem;
 
   button {
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     padding: 0.5rem 0.75rem;
     background-color: #d6d6d6;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
