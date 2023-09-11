@@ -19,7 +19,7 @@ const Home = () => {
         <button
           onClick={() => navigate("/")}
           className={`${currentParams === null ? "active" : ""}`}
-        >전체</button>
+        >해제</button>
         {districtName.map((name) => (
           <button
             key={name}
@@ -28,7 +28,7 @@ const Home = () => {
           >{name}</button>
         ))}
       </StyledFilter>
-      <Chart 
+      <Chart
         district={currentParams}
         handleClickFiltering={handleClickFiltering}
       />
