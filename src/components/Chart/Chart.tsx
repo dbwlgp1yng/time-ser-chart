@@ -12,6 +12,8 @@ import {
 } from "recharts";
 import useChartData from "../../hooks/useChartData";
 import CustomToolTip from "../CustomToolTip/CustomToolTip";
+import { useState } from "react";
+import CustomDot from "components/CustomDot/CustomDot";
 
 interface ChartProps {
   district: string | null;
@@ -20,6 +22,7 @@ interface ChartProps {
 
 const Chart = ({ district, handleClickFiltering }: ChartProps) => {
   const { data } = useChartData();
+  const [dot, setDot] = useState("");
 
   return (
     <>
@@ -76,6 +79,18 @@ const Chart = ({ district, handleClickFiltering }: ChartProps) => {
             fill="#ff7300"
             stroke="#ff7300"
             yAxisId="left"
+            onClick={() => {
+              handleClickFiltering(dot);
+            }}
+            dot={
+              <CustomDot
+                cx={0}
+                cy={0}
+                stroke="#ffaf6e"
+                district={district}
+                payload={{ id: "", time: "", value_area: 0, value_bar: 0 }}
+              />
+            }
           />
         </ComposedChart>
       </ResponsiveContainer >
