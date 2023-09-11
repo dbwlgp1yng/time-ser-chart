@@ -28,12 +28,17 @@ const Home = () => {
           >{name}</button>
         ))}
       </StyledFilter>
-      <Chart district={currentParams} />
+      <Chart 
+        district={currentParams}
+        handleClickFiltering={handleClickFiltering}
+      />
     </>
   )
 };
 
 export default Home;
+
+
 
 const StyledFilter = styled.div`
   display: flex;
@@ -48,7 +53,7 @@ const StyledFilter = styled.div`
     cursor: pointer;
   }
   .active {
-    background-color: #5c5c5c;
+    background-color: #004943;
     color: #fff;
   }
 `;
