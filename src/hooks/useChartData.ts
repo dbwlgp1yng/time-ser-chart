@@ -12,7 +12,7 @@ const useChartData = () => {
       const chartArray: IChart[] = Object.keys(data).map((key) => {
         return {
           ...data[key],
-          time: new Date(key).toLocaleTimeString().replace("오후 ", ""),
+          time: new Date(key).toLocaleTimeString(),
         };
       });
 
