@@ -25,7 +25,8 @@
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "format": "prettier --write .",
-    "lint": "eslint --quiet --fix ."
+    "lint": "eslint --quiet --fix .",
+    "deploy": "npm run build && aws s3 build/ s3://time-ser-chart --delete"
   },
   "eslintConfig": {
     "extends": [
