@@ -1,46 +1,83 @@
-# Getting Started with Create React App
+# 📈 시계열 차트
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- 주어진 데이터를 기반으로 시계열 차트를 구현하는 프로젝트입니다.
+- 이는 원티드 프리온보딩 프론트엔드 12차 4주차 과제에 해당합니다.
 
-## Available Scripts
+## 🚀 [배포 사이트](http://time-ser-chart.s3-website.ap-northeast-2.amazonaws.com/)
+GitHub Actions를 활용하여 코드를 자동으로 AWS S3로 배포했습니다.
 
-In the project directory, you can run:
+<br /> 
 
-### `npm start`
+## 📌 프로젝트 실행 방법
+1. Clone the repo
+```javascript
+$ git clone https://github.com/dbwlgp1yng/time-ser-chart.git
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+2. Install npm packages 
+```javascript
+$ npm install
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+3. Get start
+```
+$ npm start
+```
 
-### `npm test`
+## ✨ 기술 스택
+<div>
+  <img src="https://img.shields.io/badge/react-61DAFB?style=flat&logo=react&logoColor=white">
+  <img src="https://img.shields.io/badge/typescript-3178C6?style=flat&logo=typescript&logoColor=white">
+  <img src="https://img.shields.io/badge/styled components-DB7093?style=flat&logo=styledcomponents&logoColor=white">
+  <img src="https://img.shields.io/badge/axios-5A29E4?style=flat&logo=axios&logoColor=white">
+  <img src="https://img.shields.io/badge/react router-CA4245?style=flat&logo=react router&logoColor=white">
+  <img src="https://img.shields.io/badge/-Recharts-CA4245?style=flat&logo=Recharts&logoColor=white">
+</div>
+<br />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 💼 디렉토리 구조
+```
+src/
+┣ 📂 apis/
+┃   ┗ 📜 index.ts
+┣ 📂 components/
+┃   ┣ 📂 common/
+┃   ┃   ┣ 📂 header/
+┃   ┃   ┗ 📂 layout/
+┃   ┣ 📂 Chart/
+┃   ┃   ┗ 📜 Chart.tsx
+┃   ┣ 📂 CustomDot/
+┃   ┃   ┗ 📜 CustomDot.tsx
+┃   ┗ 📂 CustomToolTip/
+┃       ┗ 📜 CustomToolTip.tsx
+┣ 📂 hooks/
+┃   ┗ 📜 useChartData.ts
+┣ 📂 pages/
+┃   ┣ 📂 error/
+┃   ┣ 📂 home/
+┃   ┗ 📜 index.ts
+┣ 📂 router/
+┃   ┗ 📜 Router.tsx
+┣ 📂 types/
+┃   ┗ 📜 chart.ts
+┣ 📂 styles/
+┃   ┗ 📜 GlobalStyle.tsx
+┣ 📜 App.tsx
+┗ 📜 Index.tsx
+```
 
-### `npm run build`
+## 💡 핵심기능 구현
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Recharts 라이브러리를 사용해 차트 구현
+   > recharts 선택 이유
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. hover 기능 구현
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. query string으로 필터링 구현
 
-### `npm run eject`
+<p>버튼 필터링</p>
+<img style="center" width="800" src="https://github.com/dbwlgp1yng/time-ser-chart/assets/126330595/5df96355-201b-4e72-81c6-a283c2fce828" alt="filtering btn" />
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<p>특정 데이터 클릭시 필터링</p>
+<img style="center" width="800" src="https://github.com/dbwlgp1yng/time-ser-chart/assets/126330595/4329b29a-4f58-4b32-ae50-131a32687308" alt="filtering btn" />
