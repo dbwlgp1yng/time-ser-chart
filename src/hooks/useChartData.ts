@@ -13,17 +13,18 @@ const useChartData = () => {
         return {
           ...data[key],
           time: new Date(key).toLocaleTimeString(),
+          date: new Date(key).toLocaleDateString()
         };
       });
-
       setChartData(chartArray);
     };
     getChart();
   }, []);
   
-  const districtName = [...new Set(chartData.map((data) => data.id))].sort();
+  const districtName = [...new Set(chartData.map((data) => (data.id)))].sort();
+  const uniqueDate = [...new Set(chartData.map((item) => (item.date)))];
 
-  return { data: chartData, districtName };
+  return { data: chartData, districtName, uniqueDate };
 };
 
 export default useChartData;

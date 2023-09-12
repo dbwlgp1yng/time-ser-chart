@@ -4,7 +4,7 @@ import useChartData from "hooks/useChartData";
 import styled from "styled-components";
 
 const Home = () => {
-  const { districtName } = useChartData();
+  const { districtName, uniqueDate } = useChartData();
   const [searchParams, setSearchParams] = useSearchParams();
   const currentParams = searchParams.get("id");
   const navigate = useNavigate();
@@ -15,19 +15,22 @@ const Home = () => {
 
   return (
     <>
-      <StyledFilter>
-        <button
-          onClick={() => navigate("/")}
-          className={`${currentParams === null ? "active" : ""}`}
-        >해제</button>
-        {districtName.map((name) => (
+      <StyledContainer>
+        <div className="filter">
           <button
-            key={name}
-            onClick={() => handleClickFiltering(name)}
-            className={`${currentParams === name ? "active" : ""}`}
-          >{name}</button>
-        ))}
-      </StyledFilter>
+            onClick={() => navigate("/")}
+            className={`${currentParams === null ? "active" : ""}`}
+          >해제</button>
+          {districtName.map((name) => (
+            <button
+              key={name}
+              onClick={() => handleClickFiltering(name)}
+              className={`${currentParams === name ? "active" : ""}`}
+            >{name}</button>
+          ))}
+        </div>
+        <span className="date">({uniqueDate} 기준)</span>
+      </StyledContainer>
       <Chart
         district={currentParams}
         handleClickFiltering={handleClickFiltering}
@@ -38,22 +41,30 @@ const Home = () => {
 
 export default Home;
 
-
-
-const StyledFilter = styled.div`
+const StyledContainer = styled.div`
   display: flex;
-  gap: 0.75rem;
-  margin-left: 4rem;
-
-  button {
-    border-radius: 1rem;
-    padding: 0.5rem 0.75rem;
-    background-color: #d6d6d6;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    cursor: pointer;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: 0 4rem;
+  
+  .date {
+    font-size: 0.8rem;
+    color: #666;
   }
-  .active {
-    background-color: #004943;
-    color: #fff;
+  .filter {
+    display: flex;
+    gap: 0.75rem;
+
+    button {
+      border-radius: 1rem;
+      padding: 0.5rem 0.75rem;
+      background-color: #d6d6d6;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      cursor: pointer;
+    }
+    .active {
+      background-color: #004943;
+      color: #fff;
+    }
   }
 `;

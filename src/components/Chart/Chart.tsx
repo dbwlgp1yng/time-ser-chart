@@ -88,7 +88,13 @@ const Chart = ({ district, handleClickFiltering }: ChartProps) => {
                 cy={0}
                 stroke="#ffaf6e"
                 district={district}
-                payload={{ id: "", time: "", value_area: 0, value_bar: 0 }}
+                payload={{ 
+                  id: "", 
+                  time: "", 
+                  value_area: 0, 
+                  value_bar: 0, 
+                  date: ""
+                }}
               />
             }
           />

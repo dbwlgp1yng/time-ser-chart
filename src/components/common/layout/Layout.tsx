@@ -17,7 +17,6 @@ export default Layout;
 const StyledLayout = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   margin: 0 auto;
-  padding: 0 5rem;
+  padding: 0 6rem;
 `;
