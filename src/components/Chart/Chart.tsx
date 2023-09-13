@@ -46,6 +46,7 @@ const Chart = ({ district, handleClickFiltering }: ChartProps) => {
               offset: -10
             }}
             yAxisId="left"
+            domain={[0, 300]}
           />
           <YAxis
             label={{
@@ -69,12 +70,13 @@ const Chart = ({ district, handleClickFiltering }: ChartProps) => {
             {data.map((item, idx) => (
               <Cell
                 key={`cell-${idx}`}
-                fill={`${item.id === district ? `#004943` : `#7ac4c0`}`}
+                fill={`${item.id === district ? `#3ea09b` : `#3e91a07b`}`}
               />
             ))}
           </Bar>
           <Area
             dataKey="value_area"
+            type="monotone"
             fillOpacity={0.4}
             fill="#ff7300"
             stroke="#ff7300"
@@ -88,16 +90,17 @@ const Chart = ({ district, handleClickFiltering }: ChartProps) => {
                 cy={0}
                 stroke="#ffaf6e"
                 district={district}
-                payload={{ 
-                  id: "", 
-                  time: "", 
-                  value_area: 0, 
-                  value_bar: 0, 
+                payload={{
+                  id: "",
+                  time: "",
+                  value_area: 0,
+                  value_bar: 0,
                   date: ""
                 }}
               />
             }
           />
+
         </ComposedChart>
       </ResponsiveContainer >
     </>
