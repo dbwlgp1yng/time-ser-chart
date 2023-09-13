@@ -127,8 +127,40 @@ const CustomToolTip: React.FC<CustomToolTipProps> = ({ active, payload }) => {
 - url의 쿼리 매개변수를 변경할 수 있는 useSearchParams 훅을 사용하여 필터링을 구현하였습니다. 새로고침하더라도 상태를 유지하기 때문에 private한 값이 아니라면 query string으로 상태 관리하는 것이 유용해 보입니다. 필터링된 데이터를 쉽게 공유할 수 있으며, 브라우저 히스토리를 관리하여 뒤로 & 앞으로 가기 기능도 지원됩니다. 
 - ```handleClickFiltering``` 함수는 필터 버튼이 클릭되면 호출됩니다. 이 함수는 선택한 지역의 "id" 값을 URL의 쿼리 매개변수로 설정합니다. 버튼을 클릭한 경우에만 ```setSearchParams```를 호출하여 쿼리 매개변수를 변경합니다. 필터링된 결과는 URL의 "id" 쿼리 매개변수로 설정되어 해당 지역의 차트를 렌더링하게 됩니다.
 ```ts
-const handleClickFiltering = (clickedId: string) => {
-  if (clickedId) setSearchParams({ id: clickedId });
+const Home = () => {
+  const { districtName, uniqueDate } = useChartData();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentParams = searchParams.get("id");
+  const navigate = useNavigate();
+
+  const handleClickFiltering = (clickedId: string) => {
+    if (clickedId) setSearchParams({ id: clickedId });
+  };
+
+  return (
+    <>
+      <StyledContainer>
+        <div className="filter">
+          <button
+            onClick={() => navigate("/")}
+            className={`${currentParams === null ? "active" : ""}`}
+          >해제</button>
+          {districtName.map((name) => (
+            <button
+              key={name}
+              onClick={() => handleClickFiltering(name)}
+              className={`${currentParams === name ? "active" : ""}`}
+            >{name}</button>
+          ))}
+        </div>
+        <span className="date">({uniqueDate} 기준)</span>
+      </StyledContainer>
+      <Chart
+        district={currentParams}
+        handleClickFiltering={handleClickFiltering}
+      />
+    </>
+  )
 };
 ```
 
