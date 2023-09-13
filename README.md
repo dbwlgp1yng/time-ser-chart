@@ -184,6 +184,8 @@ src/
 ┃       ┗ 📜 CustomToolTip.tsx
 ┣ 📂 hooks/
 ┃   ┗ 📜 useChartData.ts
+┣ 📂 constant/
+┃   ┗ 📜 chart.const.ts
 ┣ 📂 pages/
 ┃   ┣ 📂 error/
 ┃   ┣ 📂 home/
