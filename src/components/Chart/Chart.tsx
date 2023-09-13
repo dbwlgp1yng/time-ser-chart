@@ -24,7 +24,7 @@ interface ChartProps {
 const Chart = ({ district, handleClickFiltering }: ChartProps) => {
   const { data } = useChartData();
   const [dot, setDot] = useState("");
-  const {chartStroke, areaFillColor, areaStrokeColor, barDefaultColor, barActiveColor} = chartColors;
+  const { chartStroke, areaFillColor, areaStrokeColor, barDefaultColor, barActiveColor } = chartColors;
 
   return (
     <>
@@ -66,6 +66,7 @@ const Chart = ({ district, handleClickFiltering }: ChartProps) => {
             dataKey="value_bar"
             barSize={20}
             yAxisId="right"
+            fill={barDefaultColor}
             onClick={(e) => handleClickFiltering(e.id)}
           >
             {data.map((item, idx) => (
