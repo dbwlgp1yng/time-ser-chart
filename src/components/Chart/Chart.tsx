@@ -84,6 +84,7 @@ const Chart = ({ district, handleClickFiltering }: ChartProps) => {
             stroke={areaFillColor}
             yAxisId="left"
             isAnimationActive={false}
+            pointerEvents='none'
             onClick={() => {
               handleClickFiltering(dot);
             }}
