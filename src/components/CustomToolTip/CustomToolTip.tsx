@@ -1,6 +1,7 @@
 import React from 'react';
 import type { TooltipProps } from "recharts";
 import styled from 'styled-components';
+import { chartColors } from '../../constant/chart.const';
 
 interface CustomToolTipProps extends TooltipProps<number, string> { }
 
@@ -31,6 +32,6 @@ const StyledToolTip = styled.div`
     color: #ff7300;
   }
   .tooltip-value-bar {
-    color: #7ac4c0;
+    color: #3ea09b;
   }
 `;

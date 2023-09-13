@@ -14,6 +14,7 @@ import useChartData from "../../hooks/useChartData";
 import CustomToolTip from "../CustomToolTip/CustomToolTip";
 import { useState } from "react";
 import CustomDot from "components/CustomDot/CustomDot";
+import { chartColors } from "constant/chart.const";
 
 interface ChartProps {
   district: string | null;
@@ -23,6 +24,7 @@ interface ChartProps {
 const Chart = ({ district, handleClickFiltering }: ChartProps) => {
   const { data } = useChartData();
   const [dot, setDot] = useState("");
+  const {chartStroke, areaFillColor, areaStrokeColor, barDefaultColor, barActiveColor} = chartColors;
 
   return (
     <>
@@ -36,7 +38,7 @@ const Chart = ({ district, handleClickFiltering }: ChartProps) => {
             left: 40
           }}
         >
-          <CartesianGrid stroke="#efefef" />
+          <CartesianGrid stroke={chartStroke} />
           <XAxis dataKey="time" />
           <YAxis
             label={{
@@ -63,14 +65,13 @@ const Chart = ({ district, handleClickFiltering }: ChartProps) => {
           <Bar
             dataKey="value_bar"
             barSize={20}
-            fill="#7ac4c0"
             yAxisId="right"
             onClick={(e) => handleClickFiltering(e.id)}
           >
             {data.map((item, idx) => (
               <Cell
                 key={`cell-${idx}`}
-                fill={`${item.id === district ? `#3ea09b` : `#3e91a07b`}`}
+                fill={item.id === district ? barDefaultColor : barActiveColor}
               />
             ))}
           </Bar>
@@ -78,9 +79,10 @@ const Chart = ({ district, handleClickFiltering }: ChartProps) => {
             dataKey="value_area"
             type="monotone"
             fillOpacity={0.4}
-            fill="#ff7300"
-            stroke="#ff7300"
+            fill={areaFillColor}
+            stroke={areaFillColor}
             yAxisId="left"
+            isAnimationActive={false}
             onClick={() => {
               handleClickFiltering(dot);
             }}
@@ -88,7 +90,7 @@ const Chart = ({ district, handleClickFiltering }: ChartProps) => {
               <CustomDot
                 cx={0}
                 cy={0}
-                stroke="#ffaf6e"
+                stroke={areaStrokeColor}
                 district={district}
                 payload={{
                   id: "",
@@ -100,7 +102,6 @@ const Chart = ({ district, handleClickFiltering }: ChartProps) => {
               />
             }
           />
-
         </ComposedChart>
       </ResponsiveContainer >
     </>

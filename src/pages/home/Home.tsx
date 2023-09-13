@@ -63,7 +63,7 @@ const StyledContainer = styled.div`
       cursor: pointer;
     }
     .active {
-      background-color: #004943;
+      background-color: #3ea09b;
       color: #fff;
     }
   }
