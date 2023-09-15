@@ -59,7 +59,7 @@ $ npm start
 ## 💡 핵심기능 구현
 
 <div align='center'>
-<img width="800" src="https://github.com/dbwlgp1yng/time-ser-chart/assets/126330595/b3bc95a4-74e4-42ee-b826-6321424d7d11" alt="filtering btn" />
+<img width="800" src="https://github.com/dbwlgp1yng/time-ser-chart/assets/126330595/7a4463fe-bd58-42e5-a1e3-ba7cdc8ce037" alt="filtering btn" />
 </div>
 
 **1. Recharts 라이브러리를 사용해 차트 구현**
